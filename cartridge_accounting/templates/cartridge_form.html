@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% if pk %}
+            Редактировать картридж: {{ form.instance }}
+        {% else %}
+            Добавить картридж
+        {% endif %}
+    </title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { margin-bottom: 32px; }
+        table { border-collapse: collapse; }
+        td { padding: 4px 8px; }
+        .errorlist { color: red; margin: 0; padding: 0; }
+        .delete-btn { background: #d00; color: #fff; margin-left: 8px; }
+        .cartridge-list { margin-top: 32px; }
+    </style>
+</head>
+<body>
+
+<h1>
+    {% if pk %}
+        Редактировать картридж: {{ form.instance }}
+    {% else %}
+        Добавить картридж
+    {% endif %}
+</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        <div class="errorlist">{{ form.non_field_errors }}</div>
+    {% endif %}
+    <table>
+        {% for field in form %}
+            <tr>
+                <td><strong>{{ field.label_tag }}</strong></td>
+                <td>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="errorlist">{{ field.errors|striptags }}</div>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <button type="submit">Сохранить</button>
+    {% if pk %}
+        <button type="submit" name="delete" class="delete-btn" onclick="return confirm('Удалить этот картридж?');">
+            Удалить
+        </button>
+    {% endif %}
+</form>
+
+<hr>
+
+<div class="cartridge-list">
+    <h2>Все картриджи</h2>
+    <ul>
+        {% for cartridge in cartridges %}
+            <li>
+                {{ cartridge.name }}
+                [<a href="{% url 'cartridges:cartridge_manage' cartridge.pk %}">Изменить/Удалить</a>]
+            </li>
+        {% empty %}
+            <li>Нет картриджей</li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>

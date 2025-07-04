@@ -24,7 +24,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_bootstrap5',
+
     'users.apps.UsersConfig',
+    'cartridges.apps.CartridgesConfig'
 ]
 
 MIDDLEWARE = [
@@ -37,7 +39,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'cartridge_accounting.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES_DIR = BASE_DIR / 'templates'
 
@@ -57,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'cartridge_accounting.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -92,6 +94,10 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_URL = '/auth/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/auth/login/'
 
 STATIC_URL = '/static/'
 

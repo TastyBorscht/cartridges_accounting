@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список картриджей</title>
+    <style>
+        body {
+            background: #fff;
+            color: #111;
+        }
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #111;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background: #eee;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin: 16px 0 0 0;
+        }
+        .add-button {
+            display: inline-block;
+            padding: 6px 16px;
+            background: #fff;
+            color: #111;
+            border: 1px solid #111;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-left: 20px;
+            /* изменен на left */
+            transition: background .2s, color .2s;
+        }
+        .add-button:hover {
+            background: #111;
+            color: #fff;
+        }
+        .logout-button {
+            display: inline-block;
+            padding: 6px 16px;
+            background: #fff;
+            color: #111;
+            border: 1px solid #111;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background .2s, color .2s;
+        }
+        .logout-button:hover {
+            background: #111;
+            color: #fff;
+        }
+        .head-row {
+            display: flex;
+            align-items: center;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        .head-row h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        /* Делаем таблицу чуть ниже чтобы не было слипшихся блоков */
+        table {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="{% url 'logout' %}" class="logout-button">Выйти</a>
+    </div>
+    <div class="head-row">
+        <h1>Список картриджей</h1>
+        <a href="{% url 'cartridges:cartridge_manage' %}" class="add-button">Добавить картридж</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Наименование картриджа</th>
+                <th>Наименование устройства</th>
+                <th>Дата ввода в экспл.</th>
+                <th>Инвентарный номер</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cartridge in cartridges %}
+                <tr>
+                    <td>{{ cartridge.name }}</td>
+                    <td>{{ cartridge.device_name }}</td>
+                    <td>{{ cartridge.acceptance_date|date:"d.m.Y" }}</td>
+                    <td>{{ cartridge.inventory_number }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">Нет данных</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
