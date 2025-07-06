@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='cartridge',
             name='acceptance_date',
-            field=models.DateField(verbose_name='Дата ввода в эксп.'),
+            field=models.DateField(verbose_name='Дата получения'),
         ),
         migrations.AlterField(
             model_name='cartridge',
             name='decommissioning_date',
-            field=models.DateField(verbose_name='Дата вывода из эксп.'),
+            field=models.DateField(verbose_name='Дата ввода в эксп.'),
         ),
     ]

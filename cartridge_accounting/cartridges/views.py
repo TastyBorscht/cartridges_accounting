@@ -1,8 +1,13 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import (
+    ListView,
+    UpdateView)
 
-from .forms import CartridgeForm
+from .forms import (
+    CartridgeCreateForm,
+    CartridgeUpdateForm,
+    )
 from .models import Cartridge
 
 class CartridgeListView(ListView):
@@ -22,9 +27,9 @@ class CartridgeListView(ListView):
 #     def get(self, request, pk=None):
 #         if pk:
 #             obj = get_object_or_404(Cartridge, pk=pk)
-#             form = CartridgeForm(instance=obj)
+#             form = CartridgeCreateForm(instance=obj)
 #         else:
-#             form = CartridgeForm()
+#             form = CartridgeCreateForm()
 #         cartridges = Cartridge.objects.all()
 #         return render(request, self.template_name, {
 #             'form': form,
@@ -40,9 +45,9 @@ class CartridgeListView(ListView):
 #         else:
 #             if pk:
 #                 obj = get_object_or_404(Cartridge, pk=pk)
-#                 form = CartridgeForm(request.POST, instance=obj)
+#                 form = CartridgeCreateForm(request.POST, instance=obj)
 #             else:
-#                 form = CartridgeForm(request.POST)
+#                 form = CartridgeCreateForm(request.POST)
 #             if form.is_valid():
 #                 form.save()
 #                 return redirect('cartridge_manage')
@@ -59,9 +64,9 @@ class CartridgeManageView(View):
     def get(self, request, pk=None):
         if pk:
             obj = get_object_or_404(Cartridge, pk=pk)
-            form = CartridgeForm(instance=obj)
+            form = CartridgeCreateForm(instance=obj)
         else:
-            form = CartridgeForm()
+            form = CartridgeCreateForm()
         cartridges = Cartridge.objects.all()
         return render(request, self.template_name, {
             'form': form,
@@ -77,9 +82,9 @@ class CartridgeManageView(View):
         else:
             if pk:
                 obj = get_object_or_404(Cartridge, pk=pk)
-                form = CartridgeForm(request.POST, instance=obj)
+                form = CartridgeCreateForm(request.POST, instance=obj)
             else:
-                form = CartridgeForm(request.POST)
+                form = CartridgeCreateForm(request.POST)
             if form.is_valid():
                 form.save()
                 return redirect('cartridges:cartridge_manage')
@@ -90,3 +95,8 @@ class CartridgeManageView(View):
             'pk': pk,
         })
 
+class CartridgeUpdateView(UpdateView):
+    model = Cartridge
+    form_class = CartridgeUpdateForm
+    template_name = 'cartridges/cartridge_update.html'
+    success_url = '/'

@@ -69,7 +69,6 @@
             margin: 0;
             font-size: 2em;
         }
-        /* Делаем таблицу чуть ниже чтобы не было слипшихся блоков */
         table {
             margin-top: 0;
         }
@@ -88,8 +87,10 @@
             <tr>
                 <th>Наименование картриджа</th>
                 <th>Наименование устройства</th>
-                <th>Дата ввода в экспл.</th>
+                <th>Дата получения</th>
                 <th>Инвентарный номер</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -99,6 +100,8 @@
                     <td>{{ cartridge.device_name }}</td>
                     <td>{{ cartridge.acceptance_date|date:"d.m.Y" }}</td>
                     <td>{{ cartridge.inventory_number }}</td>
+                    <td><a href="{% url 'cartridges:cartridges_update' cartridge.pk %}" class="button-like">Изменить</a></td>
+                    <td> <button>Ввести в экспл.</button></td>
                 </tr>
             {% empty %}
                 <tr>

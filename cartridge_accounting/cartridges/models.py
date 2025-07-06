@@ -12,10 +12,10 @@ class Cartridge(models.Model):
         max_length = 50
     )
     acceptance_date = models.DateField(
-        verbose_name='Дата ввода в эксп.',
+        verbose_name='Дата получения',
     )
     decommissioning_date = models.DateField(
-        verbose_name='Дата вывода из эксп.',
+        verbose_name='Дата ввода в эксп.',
         null=True
     )
     inventory_number = models.IntegerField(
