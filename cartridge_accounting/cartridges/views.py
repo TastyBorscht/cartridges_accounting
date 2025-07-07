@@ -12,7 +12,7 @@ from .models import Cartridge
 
 class CartridgeListView(ListView):
     model = Cartridge
-    template_name = 'main.html'
+    template_name = 'cartridges/main.html'
     context_object_name = 'cartridges'
 
     def get_queryset(self):
@@ -59,7 +59,7 @@ class CartridgeListView(ListView):
 #         })
 
 class CartridgeManageView(View):
-    template_name = 'cartridge_form.html'
+    template_name = 'cartridges/cartridge_form.html'
 
     def get(self, request, pk=None):
         if pk:
