@@ -1,0 +1,62 @@
+# Не включаем виртуальные окружения
+venv/
+env/
+ENV/
+.venv/
+.pyenv/
+
+# Исключаем файлы и папки IDE и редакторов
+.idea/
+.vscode/
+*.code-workspace
+
+# Файлы тестов (по желанию)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Игнорируем GIT и другие системы контроля версий
+.git/
+.gitignore
+.gitattributes
+
+# Логи и временные файлы
+*.log
+*.pot
+*.mo
+
+# ОС: временные файлы и прочее
+.DS_Store
+Thumbs.db
+
+# Кэш и временные файлы Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.coverage
+
+# Файлы и каталоги контейнеризации/деплоя, которые не нужны внутри контейнера
+docker-compose.*
+Dockerfile*
+
+# Файлы и папки, связанные с конфигурациями и ключами (по желанию)
+*.env
+.env*
+
+# node, если есть фронтенд-сборка
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# build-артефакты
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Бэкапы
+*.bak
+*.swp
+*~
