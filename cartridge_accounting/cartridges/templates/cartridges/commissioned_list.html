@@ -1,0 +1,45 @@
+{% extends 'cartridges/layout.html' %}
+{% load static %}
+
+{% block title %}Введённые в эксплуатацию картриджи{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'cartridges/css/cartridges_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="head-row">
+        <h1>Введённые в эксплуатацию картриджи</h1>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Наименование картриджа</th>
+                <th>Наименование устройства</th>
+                <th>Дата получения</th>
+                <th>Дата ввода в эксп.</th>
+                <th>Инвентарный номер</th>
+                <th>Место установки</th>
+                <th>Ввел в эксплуатацию</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in commissioned_cartridges %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.device_name }}</td>
+                    <td>{{ item.acceptance_date|date:"d.m.Y" }}</td>
+                    <td>{{ item.decommissioning_date|date:"d.m.Y" }}</td>
+                    <td>{{ item.inventory_number }}</td>
+                    <td>{{ item.location }}</td>
+                    <td>{{ item.expl_by }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="7">Нет данных</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
