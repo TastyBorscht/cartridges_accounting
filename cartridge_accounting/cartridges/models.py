@@ -1,6 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
 
+User = get_user_model()
 
 class Cartridge(models.Model):
     name = models.CharField(
@@ -28,6 +30,15 @@ class Cartridge(models.Model):
         verbose_name='рабочий',
         null=True
     )
+    added_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        verbose_name='Добавил'
+    )
+
+
     class Meta:
         ordering = ('acceptance_date',)
         verbose_name = 'картридж'

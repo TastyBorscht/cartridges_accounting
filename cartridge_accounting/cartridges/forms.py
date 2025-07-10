@@ -9,6 +9,7 @@ class CartridgeCreateForm(forms.ModelForm):
             'device_name',
             'acceptance_date',
             'inventory_number',
+            'added_by',
         ]
         widgets = {
             'acceptance_date': forms.DateInput(
