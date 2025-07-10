@@ -1,0 +1,23 @@
+<form method="post">
+    {% csrf_token %}
+    <h4>Ввод картриджа в эксплуатацию:</h4>
+    <p><strong>Наименование:</strong> {{ cartridge.name }}</p>
+    <p><strong>Устройство:</strong> {{ cartridge.device_name }}</p>
+    <p><strong>Инвентарный номер:</strong> {{ cartridge.inventory_number }}</p>
+
+    <div class="form-group">
+        <label for="location">Место установки:</label>
+        <input type="text" id="location" name="location" class="form-control" required>
+    </div>
+        <div class="form-group">
+        <label for="expl_by">Ввел в эксплуатацию:</label>
+        <select id="expl_by" name="expl_by" class="form-control" required>
+            <option value="{{ user.id }}">
+                    {{ user.get_full_name|default:user.username }}
+                </option>
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Подтвердить ввод в эксплуатацию</button>
+</form>

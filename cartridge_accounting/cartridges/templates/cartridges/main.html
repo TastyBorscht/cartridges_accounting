@@ -19,10 +19,11 @@
     <table>
         <thead>
             <tr>
-                <th>Наименование dкартриджа</th>
+                <th>Наименование картриджа</th>
                 <th>Наименование устройства</th>
                 <th>Дата получения</th>
                 <th>Инвентарный номер</th>
+                <th>Добавил</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -34,6 +35,7 @@
                     <td>{{ cartridge.device_name }}</td>
                     <td>{{ cartridge.acceptance_date|date:"d.m.Y" }}</td>
                     <td>{{ cartridge.inventory_number }}</td>
+                    <td>{{ cartridge.added_by }}</td>
                     <td><a href="{% url 'cartridges:cartridges_update' cartridge.pk %}" class="button-like">Изменить</a></td>
                     <td><a href="{% url 'cartridges:commission' cartridge.id %}" class="btn btn-success">Ввести в эксплуатацию</a></td>
                 </tr>

@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="{% static 'cartridges/css/cartridges.css' %}">
 {% endblock %}
 
-<!--body-->
 {% block content %}
 <h1>
     {% if pk %}
@@ -51,7 +50,7 @@
         {% for cartridge in cartridges %}
             <li>
                 {{ cartridge.name }}
-                [<a href="{% url 'cartridges:cartridge_edit' cartridge.pk %}">Изменить/Удалить</a>]
+                [<a href="{% url 'cartridges:cartridges_update' cartridge.pk %}">Изменить/Удалить</a>]
             </li>
         {% empty %}
             <li>Нет картриджей</li>
