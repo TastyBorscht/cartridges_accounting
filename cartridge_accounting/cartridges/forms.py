@@ -1,5 +1,6 @@
 from django import forms
 from .models import Cartridge
+from .models import CartridgeCommissioning
 
 class CartridgeCreateForm(forms.ModelForm):
     class Meta:
@@ -23,3 +24,7 @@ class CartridgeUpdateForm(forms.ModelForm):
             'acceptance_date',
             'inventory_number',
         ]
+class CommissioningForm(forms.ModelForm):
+    class Meta:
+        model = CartridgeCommissioning
+        fields = ['location']

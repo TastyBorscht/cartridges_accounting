@@ -35,7 +35,7 @@
                     <td>{{ cartridge.acceptance_date|date:"d.m.Y" }}</td>
                     <td>{{ cartridge.inventory_number }}</td>
                     <td><a href="{% url 'cartridges:cartridges_update' cartridge.pk %}" class="button-like">Изменить</a></td>
-                    <td> <button>Ввести в экспл.</button></td>
+                    <td><a href="{% url 'cartridges:commission' cartridge.id %}" class="btn btn-success">Ввести в эксплуатацию</a></td>
                 </tr>
             {% empty %}
                 <tr>
