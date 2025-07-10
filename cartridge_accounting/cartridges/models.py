@@ -3,6 +3,7 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from datetime import date
 
+User = get_user_model()
 
 
 

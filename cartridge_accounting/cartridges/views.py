@@ -101,7 +101,6 @@ def commission(request, pk):
         cartridge.expl_by = request.user
 
         if location:
-            # Создаем запись в новой таблице
             CommissionedCartridge.objects.create(
                 name=cartridge.name,
                 device_name=cartridge.device_name,
@@ -113,7 +112,6 @@ def commission(request, pk):
                 expl_by= request.user
             )
 
-            # Удаляем из исходной таблицы
             cartridge.delete()
 
             return redirect('cartridges:commissioned_list')
