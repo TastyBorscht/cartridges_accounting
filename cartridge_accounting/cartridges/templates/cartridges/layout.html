@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="static/cartridges/css/navbar.css">
 </head>
 <body>
+{% if request.user.is_authenticated %}
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="collapse navbar-collapse" id="navbarNav">
   <ul class="navbar-nav">
@@ -30,5 +31,8 @@
 </nav>
     {% block content %}
     {% endblock %}
+{% else %}
+<a href='/auth/login'>Авторизация </a>
+{% endif %}
 </body>
 </html>

@@ -29,6 +29,25 @@
             </tr>
         </thead>
         <tbody>
+            <td><form action="{% url 'cartridges:search' %}"method="get"><input type='search'type="text"name="name"placeholder="наименованию"value="{{ name_query|default:'' }}"> <button type="submit"> Найти</button></form></td>
+            <td><form action="{% url 'cartridges:search' %}"method="get"><input type='search'type="text"name="device"placeholder="наименованию"value="{{ device_query|default:'' }}"> <button type="submit"> Найти</button></form></td>
+            <td><form method="get" action="{% url 'cartridges:search' %}"><input type="date" name="date_from"> до<input type="date" name="date_to"><button type="submit">Найти</button></form></td>
+            <td><form action="{% url 'cartridges:search' %}"method="get"><input type='search'type="text"name="inventory_number"placeholder="Инвентарный"value="{{ inv_number_query|default:'' }}"> <button type="submit"> Найти</button></form></td>
+            <td>
+                <form method="get" action="{% url 'cartridges:search' %}">
+                    <select name="user">
+                        <option value="">Все пользователи</option>
+                        {% for user in users %}
+                        <option value="{{ user.id }}"
+                                {% if selected_user == user.id|stringformat:"s" %}selected{% endif %}>
+                            {{ user.username }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Фильтровать</button>
+                </form>
+            </td>
+
             {% for cartridge in cartridges %}
                 <tr>
                     <td>{{ cartridge.name }}</td>
