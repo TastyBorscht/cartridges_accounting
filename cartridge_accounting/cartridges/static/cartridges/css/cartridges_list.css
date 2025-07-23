@@ -1,5 +1,5 @@
 body {
-            background: #fff;
+            background: #111;
             color: #111;
         }
 table {
@@ -66,3 +66,11 @@ th {
 table {
             margin-top: 0;
         }
+th form {
+    display: flex;
+    margin-bottom: 5px;
+}
+th form input {
+    width: 100%;
+    padding: 3px;
+}

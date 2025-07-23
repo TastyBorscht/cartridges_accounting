@@ -11,6 +11,7 @@ app_name = 'cartridges'
 
 urlpatterns = [
     path('', views.CartridgeListView.as_view(), name='cartridges_list',),
+    path('search/', views.Search.as_view(), name='search'),
     path('<int:pk>/update/', views.CartridgeUpdateView.as_view(), name='cartridges_update'),
     path('delete/<int:pk>/', CartridgeDeleteView.as_view(), name='cartridge_delete'),
     path('cartridge_manage/', views.CartridgeManageView.as_view(), name='cartridge_manage'),
